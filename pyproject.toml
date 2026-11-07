@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "charity-compliance"
+version = "1.0.0"
+description = "Is this Canadian charity ready to file? Donation-receipt validation and a T3010 pre-flight check as one local CLI with a single readiness receipt."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Jasveer Singh" },
+]
+keywords = [
+    "charity",
+    "canada",
+    "cra",
+    "t3010",
+    "donation-receipts",
+    "compliance",
+    "cli",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/jasveerai88/charity-compliance"
+Repository = "https://github.com/jasveerai88/charity-compliance"
+Issues = "https://github.com/jasveerai88/charity-compliance/issues"
+Changelog = "https://github.com/jasveerai88/charity-compliance/blob/main/CHANGELOG.md"
+
+[project.scripts]
+charity-compliance = "charity_compliance:main"
+
+# The suite is three standard-library modules in src/: the
+# charity_compliance dispatcher plus the two ported module
+# engines (receipt_gate, t3010_check), each installed as a
+# top-level module so the dispatcher can import them by
+# name. `python3 src/charity_compliance.py` keeps working
+# from a checkout.
+[tool.setuptools]
+package-dir = { "" = "src" }
+py-modules = ["charity_compliance", "receipt_gate", "t3010_check"]
